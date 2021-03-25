@@ -1,4 +1,4 @@
-package se.atg.service.harrykart.harrykart;
+package se.atg.service.harrykart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
