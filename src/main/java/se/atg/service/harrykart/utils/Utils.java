@@ -1,6 +1,6 @@
 package se.atg.service.harrykart.utils;
 import org.springframework.stereotype.Component;
-import se.atg.service.harrykart.model.HarryKartType;
+import se.atg.service.harrykart.model.HarryKart;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -12,14 +12,14 @@ import java.io.StringWriter;
 @Component
 public class Utils {
 
-    public HarryKartType unMarshXmlInputToHarryKartType(File xml) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(HarryKartType.class);
+    public HarryKart unMarshXmlInputToHarryKart(File xml) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(HarryKart.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        HarryKartType harryKartType = (HarryKartType) unmarshaller.unmarshal(xml);
+        HarryKart harryKartType = (HarryKart) unmarshaller.unmarshal(xml);
         return harryKartType;
     }
-    public String marshalHarryKartTypeToXmlFile(HarryKartType harryKartType) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(HarryKartType.class);
+    public String marshalHarryKartToXmlFile(HarryKart harryKartType) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(HarryKart.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
         StringWriter stringWriter = new StringWriter();
         marshaller.marshal(harryKartType, stringWriter);

@@ -8,8 +8,11 @@
 
 package se.atg.service.harrykart.model;
 
-import java.math.BigInteger;
+import se.atg.service.harrykart.type.PowerUpsType;
+import se.atg.service.harrykart.type.StartListType;
+
 import javax.xml.bind.annotation.*;
+import java.math.BigInteger;
 
 
 /**
@@ -40,7 +43,7 @@ import javax.xml.bind.annotation.*;
     "startList",
     "powerUps"
 })
-public class HarryKartType {
+public class HarryKart {
 
     @XmlElement(required = true)
     protected BigInteger numberOfLoops;

@@ -6,7 +6,9 @@
 //
 
 
-package se.atg.service.harrykart.model;
+package se.atg.service.harrykart.type;
+
+import se.atg.service.harrykart.model.HarryKart;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -41,11 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HarryKartType }
+     * Create an instance of {@link HarryKart }
      * 
      */
-    public HarryKartType createHarryKart() {
-        return new HarryKartType();
+    public HarryKart createHarryKart() {
+        return new HarryKart();
     }
 
     /**
@@ -89,12 +91,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HarryKartType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link HarryKart }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "harryKart")
-    public JAXBElement<HarryKartType> createHarryKart(HarryKartType value) {
-        return new JAXBElement<HarryKartType>(_HarryKart_QNAME, HarryKartType.class, null, value);
+    public JAXBElement<HarryKart> createHarryKart(HarryKart value) {
+        return new JAXBElement<HarryKart>(_HarryKart_QNAME, HarryKart.class, null, value);
     }
 
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
-import se.atg.service.harrykart.model.HarryKartType;
+import se.atg.service.harrykart.model.HarryKart;
 import se.atg.service.harrykart.utils.Utils;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -20,22 +20,22 @@ class HarryKartServiceImpTest {
     private Utils utils;
     @Value("classpath:input_1.xml")
     private Resource getResource;
-    private HarryKartType harryKartType;
+    private HarryKart harryKart;
 
     @BeforeEach
     void setUp() throws IOException, JAXBException {
-        harryKartType = utils.unMarshXmlInputToHarryKartType(getResource.getFile());
+        harryKart = utils.unMarshXmlInputToHarryKart(getResource.getFile());
     }
 
     @Test
     void play() {
-        assertThat(harryKartServiceImp.play(harryKartType).getRanking().get(0).getHorse(), equalTo("WAIKIKI SILVIO"));
+        assertThat(harryKartServiceImp.play(harryKart).getRanking().get(0).getHorse(), equalTo("WAIKIKI SILVIO"));
     }
 
     @Test
     void prepareHorsesToTheRacing() {
         assertThat(harryKartServiceImp.
-                prepareHorsesToTheRacing(harryKartType.
+                prepareHorsesToTheRacing(harryKart.
                         getStartList()
                         .getParticipant()).get(0).getClass().getSimpleName(),
                 equalTo("HorseInRace"));
@@ -44,8 +44,8 @@ class HarryKartServiceImpTest {
     @Test
     void startRacing() {
         assertThat(harryKartServiceImp.startRacing(
-                harryKartType,
-                harryKartServiceImp.prepareHorsesToTheRacing(harryKartType.getStartList().getParticipant())
+                harryKart,
+                harryKartServiceImp.prepareHorsesToTheRacing(harryKart.getStartList().getParticipant())
         ).get(0).getDurationTime().size()
                 , equalTo(3));
     }
@@ -53,7 +53,7 @@ class HarryKartServiceImpTest {
     @Test
     void getRanking() {
         assertThat(harryKartServiceImp.getRanking(harryKartServiceImp
-                .prepareHorsesToTheRacing(harryKartType.getStartList().
+                .prepareHorsesToTheRacing(harryKart.getStartList().
                         getParticipant())).getRanking().size(), equalTo(3));
     }
 }

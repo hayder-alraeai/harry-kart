@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultResponseType {
-    protected List<RankingType> ranking;
+public class ResultResponse {
+    protected List<Ranking> ranking;
 
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RankingType {
+public class Ranking {
     protected int position;
     protected String horse;
 }
