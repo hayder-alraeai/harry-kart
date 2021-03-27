@@ -1,17 +1,14 @@
 package se.atg.service.harrykart.service;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import se.atg.service.harrykart.model.HarryKartType;
-import se.atg.service.harrykart.model.ResultResponseType;
-import se.atg.service.harrykart.utils.Utils;
+import se.atg.service.harrykart.model.*;
+import se.atg.service.harrykart.model.HorseInRace;
+import java.util.List;
 
-@AllArgsConstructor
 @Service
-public class HarryKartService {
-    private Utils utils;
-
-    public ResultResponseType playHarryKart(HarryKartType harryKartType) {
-        return utils.getRanking(utils.createRacing(harryKartType));
-    }
+public interface HarryKartService {
+    ResultResponseType play(HarryKartType harryKartType);
+    List<HorseInRace> prepareHorsesToTheRacing(List<ParticipantType> participantType);
+    List<HorseInRace> startRacing(HarryKartType harryKartType,List<HorseInRace> horsesInRace);
+    ResultResponseType getRanking(List<HorseInRace> horsesInRace);
 }
