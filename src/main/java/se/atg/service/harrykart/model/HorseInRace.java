@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class HorseInRace implements Comparable{
+public class HorseInRace implements Comparable<HorseInRace>{
     private String name;
     private int speed;
     private int laneNumber;
@@ -30,9 +30,8 @@ public class HorseInRace implements Comparable{
         setFinalTime(durationTime.stream().reduce(0,Integer::sum) / durationTime.size());
     }
     @Override
-    public int compareTo(Object o) {
-        int comparedTime = ((HorseInRace)o).getFinalTime();
-        return this.getFinalTime() - comparedTime;
+    public int compareTo(HorseInRace o) {
+        return this.getFinalTime() - o.getFinalTime();
     }
 
 }
